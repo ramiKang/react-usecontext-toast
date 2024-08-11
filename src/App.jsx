@@ -1,9 +1,7 @@
+import TestPage from "./page/TestPage";
+
 function App() {
-  return (
-    <div>
-      <p>Test</p>
-    </div>
-  );
+  return <TestPage />;
 }
 
 export default App;
