@@ -10,7 +10,7 @@ const Toast = () => {
     toastList?.length > 0 && (
       <StyledCommonToastBackGround>
         {toastList?.map((toast) => (
-          <ToastItem key={toast.key} {...toast} />
+          <ToastItem key={toast.key} toastKey={toast.key} {...toast} />
         ))}
       </StyledCommonToastBackGround>
     )

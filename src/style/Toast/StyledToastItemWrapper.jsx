@@ -16,6 +16,7 @@ const fadeOut = keyframes`
 const StyledToastItemWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   width: 250px;
   height: 30px;

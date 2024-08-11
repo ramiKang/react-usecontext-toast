@@ -3,7 +3,7 @@ import { TOAST_TYPE } from "../../../constant/Toast/toastTypes";
 import StyledToastItemWrapper from "../../../style/Toast/StyledToastItemWrapper";
 import useControlToast from "../../../hook/Toast/useControlToast";
 
-const ToastItem = ({ key: toastKey, ...props }) => {
+const ToastItem = ({ toastKey, ...props }) => {
   const TOAST_FLOATING_TIME = 3000;
   const { removeToast } = useControlToast();
 
@@ -38,6 +38,14 @@ const ToastItem = ({ key: toastKey, ...props }) => {
       {...props}
     >
       {message || "TOAST MESSAGE"}
+      <div
+        className="cursor-pointer"
+        onClick={() => {
+          removeToast(toastKey);
+        }}
+      >
+        X
+      </div>
     </StyledToastItemWrapper>
   );
 };
