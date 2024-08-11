@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { TOAST_TYPE } from "../../constant/Toast/toastTypes";
 
-const ToastItemWrapper = styled.div`
+const StyledToastItemWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -32,4 +32,4 @@ const ToastItemWrapper = styled.div`
     `};
 `;
 
-export default ToastItemWrapper;
+export default StyledToastItemWrapper;

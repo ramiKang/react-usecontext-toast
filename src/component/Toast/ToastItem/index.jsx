@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ToastItemWrapper from "../../../style/Toast/ToastItemWrapper";
 import { TOAST_TYPE } from "../../../constant/Toast/toastTypes";
+import StyledToastItemWrapper from "../../../style/Toast/StyledToastItemWrapper";
 
 const ToastItem = ({ toastKey, ...props }) => {
   const { type, message, suppressAutoFadeOut } = props;
@@ -13,9 +13,9 @@ const ToastItem = ({ toastKey, ...props }) => {
   }, [type]);
 
   return (
-    <ToastItemWrapper $toastType={toastType} {...props}>
+    <StyledToastItemWrapper $toastType={toastType} {...props}>
       {message || "TOAST MESSAGE"}
-    </ToastItemWrapper>
+    </StyledToastItemWrapper>
   );
 };
 
