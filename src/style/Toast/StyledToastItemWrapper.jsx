@@ -1,5 +1,17 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { TOAST_TYPE } from "../../constant/Toast/toastTypes";
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 const StyledToastItemWrapper = styled.div`
   display: flex;
@@ -13,8 +25,14 @@ const StyledToastItemWrapper = styled.div`
   padding: 0.75rem;
   color: #ffffff;
   font-size: 12px;
-
   margin-bottom: 5px;
+
+  ${(props) =>
+    !props?.suppressAutoFadeOut &&
+    css`
+      animation: ${fadeOut} ${props?.$toastTime}ms ease-in-out;
+      animation-fill-mode: forwards;
+    `}
 
   ${(props) =>
     props?.$toastType === TOAST_TYPE?.SUCCESS &&

@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { TOAST_TYPE } from "../../../constant/Toast/toastTypes";
 import StyledToastItemWrapper from "../../../style/Toast/StyledToastItemWrapper";
+import useControlToast from "../../../hook/Toast/useControlToast";
 
-const ToastItem = ({ toastKey, ...props }) => {
+const ToastItem = ({ key: toastKey, ...props }) => {
+  const TOAST_FLOATING_TIME = 3000;
+  const { removeToast } = useControlToast();
+
   const { type, message, suppressAutoFadeOut } = props;
 
   const [toastType, setToastType] = useState(TOAST_TYPE?.SUCCESS);
@@ -12,8 +16,27 @@ const ToastItem = ({ toastKey, ...props }) => {
     }
   }, [type]);
 
+  useEffect(() => {
+    if (!suppressAutoFadeOut) {
+      const toastTimer = setTimeout(() => {
+        removeToast(toastKey);
+      }, TOAST_FLOATING_TIME);
+
+      return () => {
+        if (!suppressAutoFadeOut) {
+          clearTimeout(toastTimer);
+        }
+      };
+    }
+    return () => {};
+  }, [suppressAutoFadeOut]);
+
   return (
-    <StyledToastItemWrapper $toastType={toastType} {...props}>
+    <StyledToastItemWrapper
+      $toastType={toastType}
+      $toastTime={TOAST_FLOATING_TIME}
+      {...props}
+    >
       {message || "TOAST MESSAGE"}
     </StyledToastItemWrapper>
   );
