@@ -14,6 +14,8 @@ const StyledToastItemWrapper = styled.div`
   color: #ffffff;
   font-size: 12px;
 
+  margin-bottom: 5px;
+
   ${(props) =>
     props?.$toastType === TOAST_TYPE?.SUCCESS &&
     css`
